@@ -3,132 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>吵架惩罚</title>
+<title>惩罚</title>
+
 <style>
 body {
-  font-family: "Helvetica Neue", Arial;
-  background: linear-gradient(180deg, #dff4ff 0%, #bde3ff 100%);
-  display: flex;
-  justify-content: center;
-  padding: 20px;
+  font-family:"Helvetica Neue",Arial;
+  background:linear-gradient(180deg,#dff4ff,#bde3ff);
+  display:flex;
+  justify-content:center;
+  padding:20px;
 }
 
-/* 主卡片 */
 .card {
-  width: 360px;
-  background: white;
-  border-radius: 22px;
-  padding: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  animation: fadeIn 1s ease-out;
+  width:360px;
+  background:white;
+  border-radius:22px;
+  padding:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  animation:fadeIn 1s ease-out;
 }
 
 @keyframes fadeIn {
-  from {opacity:0; transform:scale(0.96);}
+  from {opacity:0; transform:scale(.96);}
   to {opacity:1; transform:scale(1);}
 }
 
-/* 标题 */
 .title {
-  text-align: center;
-  font-size: 22px;
-  color: #4a9be6;
-  font-weight: bold;
-  margin-bottom: 16px;
-  animation: floatTitle 3s infinite ease-in-out;
+  text-align:center;
+  font-size:22px;
+  color:#4a9be6;
+  font-weight:bold;
+  margin-bottom:16px;
 }
 
-@keyframes floatTitle {
-  0%,100% {transform: translateY(0);}
-  50% {transform: translateY(-5px);}
-}
-
-/* 网格 */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border: 2px solid #4a9be6;
-  border-radius: 14px;
-  overflow: hidden;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border:2px solid #4a9be6;
+  border-radius:14px;
+  overflow:hidden;
 }
 
-/* 单元格 */
 .cell {
-  border: 1px solid #cfe8ff;
-  padding: 12px 4px;
-  font-size: 13px;
-  height: 58px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: white;
-  transition: all .3s ease;
+  border:1px solid #cfe8ff;
+  height:58px;
+  font-size:13px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:white;
+  transition:all .15s ease;
 }
 
-/* 中间大格子（合并 2x2）*/
+/* 中间大格子 */
 .center-img {
-  grid-column: span 2;
-  grid-row: span 2;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  grid-column:span 2;
+  grid-row:span 2;
 }
-
 .center-img img {
-  width: 130px;
-  height: auto;
-  border-radius: 14px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  width:120px;
+  border-radius:14px;
+  box-shadow:0 4px 10px rgba(0,0,0,.15);
 }
 
-/* 抽到高亮格子的特效 */
-.highlight {
-  background: #fff3ac !important;
-  transform: scale(1.1);
-  box-shadow: 0 0 10px #ffe47a;
-  font-weight: bold;
-  border-color: #ffd35b;
-}
-
-/* 按钮 */
-.button {
-  margin-top: 18px;
-  width: 100%;
-  background: #4a9be6;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 14px;
-  font-size: 17px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* 点击波纹 */
-.button:active::after {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: rgba(255,255,255,0.45);
-  top: -50%;
-  left: -50%;
-  border-radius: 50%;
-  animation: ripple .5s ease-out;
-}
-
-@keyframes ripple {
-  from {transform: scale(0); opacity: 1;}
-  to {transform: scale(1); opacity: 0;}
+/* 跑马灯闪烁格子 */
+.flash {
+  background:#fff7b2 !important;
+  transform:scale(1.12);
+  box-shadow:0 0 10px #ffe47a;
+  font-weight:bold;
 }
 </style>
 </head>
-<body>
 
+<body>
 <div class="card">
-  <div class="title">跟娄莉吵架的惩罚</div>
+  <div class="title">跟娄莉吵架惩罚</div>
 
   <div class="grid" id="grid">
 
@@ -139,9 +90,9 @@ body {
 
     <div class="cell">喝奶茶</div>
 
-    <!-- 🔥 中间 Judy 图片（合并 4 格） -->
+    <!-- Judy 大图 -->
     <div class="center-img">
-      <img src="https://i.imgur.com/e6VkZ1g.png">
+      <img src="https://raw.githubusercontent.com/ChatGPT-AssetLibrary/JudyHopps/main/judy1.png">
     </div>
 
     <div class="cell">转账52元</div>
@@ -152,20 +103,37 @@ body {
     <div class="cell">再来一次</div>
     <div class="cell">跪下唱征服</div>
     <div class="cell">打屁股52下</div>
-    <div class="cell">全部来一遍！</div>
+    <div class="cell">全部来一遍!</div>
 
   </div>
 
-  <button class="button" onclick="pick()">随机抽一个惩罚</button>
+  <button class="button" onclick="start()">随机抽一个惩罚</button>
 </div>
 
 <script>
-function pick() {
+function start() {
   let cells = Array.from(document.querySelectorAll(".cell"));
-  cells.forEach(c => c.classList.remove("highlight"));
+  cells.forEach(c => c.classList.remove("flash"));
 
-  let choice = cells[Math.floor(Math.random() * cells.length)];
-  choice.classList.add("highlight");
+  let duration = 500 + Math.random() * 300; // 0.5~0.8 秒
+  let interval = 80; // 每格闪过的速度
+
+  let index = 0;
+  let timer = setInterval(() => {
+    cells.forEach(c => c.classList.remove("flash"));
+    cells[index].classList.add("flash");
+    index = (index + 1) % cells.length;
+  }, interval);
+
+  setTimeout(() => {
+    clearInterval(timer);
+
+    // 最终中奖
+    let finalIndex = Math.floor(Math.random() * cells.length);
+    cells.forEach(c => c.classList.remove("flash"));
+    cells[finalIndex].classList.add("flash");
+
+  }, duration);
 }
 </script>
 
