@@ -7,62 +7,122 @@
 <style>
 body {
   font-family: "Helvetica Neue", Arial;
-  background: #d8efff;
+  background: linear-gradient(180deg, #dff4ff 0%, #bde3ff 100%);
   display: flex;
   justify-content: center;
   padding: 20px;
 }
+
+/* 主卡片 */
 .card {
-  width: 350px;
+  width: 360px;
   background: white;
-  border-radius: 20px;
-  padding: 15px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  animation: fadeIn 1s ease-out;
 }
+
+@keyframes fadeIn {
+  from {opacity:0; transform:scale(0.96);}
+  to {opacity:1; transform:scale(1);}
+}
+
+/* 标题 */
 .title {
   text-align: center;
-  font-size: 20px;
+  font-size: 22px;
   color: #4a9be6;
   font-weight: bold;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  animation: floatTitle 3s infinite ease-in-out;
 }
+
+@keyframes floatTitle {
+  0%,100% {transform: translateY(0);}
+  50% {transform: translateY(-5px);}
+}
+
+/* 网格 */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border: 2px solid #4a9be6;
-  border-radius: 10px;
+  border-radius: 14px;
   overflow: hidden;
 }
+
+/* 单元格 */
 .cell {
-  border: 1px solid #bae0ff;
-  padding: 10px 4px;
-  font-size: 12px;
-  height: 55px;
+  border: 1px solid #cfe8ff;
+  padding: 12px 4px;
+  font-size: 13px;
+  height: 58px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  background: white;
+  transition: all .3s ease;
 }
+
+/* 居中区域 */
 .center {
   grid-column: span 2;
   grid-row: span 2;
   flex-direction: column;
 }
+
+/* 可爱兔子动画 */
 .bunny {
-  font-size: 42px;
+  font-size: 45px;
+  animation: bunnyJump 1.4s infinite ease-in-out;
 }
+
+@keyframes bunnyJump {
+  0%, 100% {transform: translateY(0);}
+  50% {transform: translateY(-10px);}
+}
+
+/* 抽到高亮格子的特效 */
 .highlight {
-  background: #ffe28f !important;
+  background: #fff3ac !important;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #ffe47a;
+  font-weight: bold;
+  border-color: #ffd35b;
 }
+
+/* 按钮 */
 .button {
-  margin-top: 14px;
+  margin-top: 18px;
   width: 100%;
   background: #4a9be6;
   color: white;
   border: none;
-  padding: 10px;
-  border-radius: 12px;
-  font-size: 16px;
+  padding: 12px;
+  border-radius: 14px;
+  font-size: 17px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 点击波纹 */
+.button:active::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: rgba(255,255,255,0.45);
+  top: -50%;
+  left: -50%;
+  border-radius: 50%;
+  animation: ripple .5s ease-out;
+}
+
+@keyframes ripple {
+  from {transform: scale(0); opacity: 1;}
+  to {transform: scale(1); opacity: 0;}
 }
 </style>
 </head>
@@ -81,7 +141,7 @@ body {
 
     <div class="cell center">
       <div class="bunny">🐰</div>
-      <div style="font-size:11px;color:#8aa6c5;">你惹兔兔生气啦</div>
+      <div style="font-size:12px;color:#8aa6c5;">你惹兔兔生气啦</div>
     </div>
 
     <div class="cell">转账 52 元</div>
@@ -103,7 +163,7 @@ function pick() {
   let cells = Array.from(document.querySelectorAll(".cell"));
   cells.forEach(c => c.classList.remove("highlight"));
 
-  let choice = cells[Math.floor(Math.random()*cells.length)];
+  let choice = cells[Math.floor(Math.random() * cells.length)];
   choice.classList.add("highlight");
 }
 </script>
