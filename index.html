@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兔兔惩罚卡</title>
+<style>
+body {
+  font-family: "Helvetica Neue", Arial;
+  background: #d8efff;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.card {
+  width: 350px;
+  background: white;
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+.title {
+  text-align: center;
+  font-size: 20px;
+  color: #4a9be6;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 2px solid #4a9be6;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.cell {
+  border: 1px solid #bae0ff;
+  padding: 10px 4px;
+  font-size: 12px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.center {
+  grid-column: span 2;
+  grid-row: span 2;
+  flex-direction: column;
+}
+.bunny {
+  font-size: 42px;
+}
+.highlight {
+  background: #ffe28f !important;
+}
+.button {
+  margin-top: 14px;
+  width: 100%;
+  background: #4a9be6;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="title">兔兔的惩罚任务卡</div>
+
+  <div class="grid" id="grid">
+    <div class="cell">请我吃好吃的</div>
+    <div class="cell">给我买零食</div>
+    <div class="cell">朋友圈道歉</div>
+    <div class="cell">任选一个</div>
+
+    <div class="cell">请我喝奶茶</div>
+
+    <div class="cell center">
+      <div class="bunny">🐰</div>
+      <div style="font-size:11px;color:#8aa6c5;">你惹兔兔生气啦</div>
+    </div>
+
+    <div class="cell">转账 52 元</div>
+
+    <div class="cell">小零食礼包</div>
+    <div class="cell">买新衣服</div>
+
+    <div class="cell">再来一次</div>
+    <div class="cell">跪下唱征服</div>
+    <div class="cell">打屁股 52 下</div>
+    <div class="cell">全部来一遍！</div>
+  </div>
+
+  <button class="button" onclick="pick()">随机抽一个惩罚</button>
+</div>
+
+<script>
+function pick() {
+  let cells = Array.from(document.querySelectorAll(".cell"));
+  cells.forEach(c => c.classList.remove("highlight"));
+
+  let choice = cells[Math.floor(Math.random()*cells.length)];
+  choice.classList.add("highlight");
+}
+</script>
+
+</body>
+</html>
