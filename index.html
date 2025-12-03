@@ -66,22 +66,21 @@ body {
   transition: all .3s ease;
 }
 
-/* 居中区域 */
-.center {
+/* 中间大格子（合并 2x2）*/
+.center-img {
   grid-column: span 2;
   grid-row: span 2;
-  flex-direction: column;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* 可爱兔子动画 */
-.bunny {
-  font-size: 45px;
-  animation: bunnyJump 1.4s infinite ease-in-out;
-}
-
-@keyframes bunnyJump {
-  0%, 100% {transform: translateY(0);}
-  50% {transform: translateY(-10px);}
+.center-img img {
+  width: 130px;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 /* 抽到高亮格子的特效 */
@@ -129,30 +128,32 @@ body {
 <body>
 
 <div class="card">
-  <div class="title">兔兔的惩罚任务卡</div>
+  <div class="title">跟娄莉吵架的惩罚</div>
 
   <div class="grid" id="grid">
-    <div class="cell">请我吃好吃的</div>
-    <div class="cell">给我买零食</div>
+
+    <div class="cell">吃好吃的</div>
+    <div class="cell">买零食</div>
     <div class="cell">朋友圈道歉</div>
     <div class="cell">任选一个</div>
 
-    <div class="cell">请我喝奶茶</div>
+    <div class="cell">喝奶茶</div>
 
-    <div class="cell center">
-      <div class="bunny">🐰</div>
-      <div style="font-size:12px;color:#8aa6c5;">你惹兔兔生气啦</div>
+    <!-- 🔥 中间 Judy 图片（合并 4 格） -->
+    <div class="center-img">
+      <img src="https://i.imgur.com/e6VkZ1g.png">
     </div>
 
-    <div class="cell">转账 52 元</div>
+    <div class="cell">转账52元</div>
 
     <div class="cell">小零食礼包</div>
     <div class="cell">买新衣服</div>
 
     <div class="cell">再来一次</div>
     <div class="cell">跪下唱征服</div>
-    <div class="cell">打屁股 52 下</div>
+    <div class="cell">打屁股52下</div>
     <div class="cell">全部来一遍！</div>
+
   </div>
 
   <button class="button" onclick="pick()">随机抽一个惩罚</button>
